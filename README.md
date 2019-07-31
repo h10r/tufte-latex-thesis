@@ -12,4 +12,4 @@ Main differences between this version and [Tiff](ttseng/tufte-latex-mit)'s:
 
 Check out main.pdf for a preview of what it looks like.
 
-Tweaks [Tiff's](ttseng/tufte-latex-mit)'s template made by Carla [@carlagriggio](https://twitter.com/carlagriggio).
+Tweaks to [Tiff](ttseng/tufte-latex-mit)'s template made by Carla [@carlagriggio](https://twitter.com/carlagriggio).
