@@ -1,4 +1,4 @@
-# tufte-latex-mit
+# tufte-latex-thesis
 
 This is a PhD thesis template based on [Tiff](ttseng/tufte-latex-mit)'s version of the [MIT's LaTeX thesis template](http://web.mit.edu/thesis/tex/) and the [Tufte-LaTeX] (https://tufte-latex.github.io/tufte-latex/) template. It supports margin figures! Great for small or narrow figures that would otherwise take a lot of space from the main body of text. It also supports bilingual abstracts, ideal for thesis of universities that require abstracts in both English and the local language.
 
