@@ -19,9 +19,24 @@
 % to the opening page of Chapter 1.  The running heads, when they appear,
 % contain only the (arabic) page number in the outside corner.
 %\newif\if@mainmatter \@mainmattertrue
+% \renewcommand\frontmatter{%
+%   \@mainmatterfalse%
+%   \pagenumbering{arabic}%
+%   %\pagestyle{plain}%
+%   \fancyhf{}%
+%   \ifthenelse{\boolean{@tufte@twoside}}%
+%     {\fancyhead[LE,RO]{\thepage}}%
+%     {\fancyhead[RE,RO]{\thepage}}%
+% }
+
 \renewcommand\frontmatter{%
+  \if@openright%
+    \cleardoublepage%
+  \else%
+    \clearpage%
+  \fi%
   \@mainmatterfalse%
-  \pagenumbering{arabic}%
+  \pagenumbering{roman}%
   %\pagestyle{plain}%
   \fancyhf{}%
   \ifthenelse{\boolean{@tufte@twoside}}%
@@ -30,11 +45,19 @@
 }
 
 
+
 %%
-% The main matter in Tufte's /Beautiful Evidence/ doesn't restart the page
-% numbering---it continues where it left off in the front matter.
+% The main matter starts numbering pages from the number 1 (the first page of the first chapter is page 1).
+
+
 \renewcommand\mainmatter{%
+  \if@openright%
+    \cleardoublepage%
+  \else%
+    \clearpage%
+  \fi%
   \@mainmattertrue%
+    \pagenumbering{arabic}%
   \fancyhf{}%
   \ifthenelse{\boolean{@tufte@twoside}}%
     {% two-side
@@ -46,7 +69,6 @@
       \fancyhead[RE,RO]{\smallcaps{\newlinetospace{\plaintitle}}\quad\thepage}% book title
     }%
 }
-
 
 %%
 % The back matter contains appendices, indices, glossaries, endnotes,
@@ -157,23 +179,46 @@
 
 % abstract
 \def\abstractpage{\cleardoublepage
-\noindent\large{\bf \@title} \\
-\hfill \\
-\newline \noindent\@author 
-\par
-\def\baselinestretch{1}\@normalsize
-\noindent
-{\setlength{\parindent}{0cm}Submitted to the \@department  \\
-on \@thesisdate, in partial fulfillment of the requirements for \\
-the \@degreeword\ of \@degree}
-\par
+% \noindent\large{\bf \@title} \\
+% \hfill \\
+% \newline \noindent\@author 
+% \par
+% \def\baselinestretch{1}\@normalsize
+% \noindent
+% {\setlength{\parindent}{0cm}Submitted to the \@department  \\
+% on \@thesisdate, in partial fulfillment of the requirements for \\
+% the \@degreeword\ of \@degree}
+% \par
 \begin{abstract}}
 
 %% Changed from \unvbox to \unvcopy for use with multiple copies of abstract
 %% page.
 %% Krishna Sethuraman (1990)
 \def\endabstractpage{\end{abstract}\noindent
- \unvcopy\@abstractsupervisor \newpage}
+% \unvcopy\@abstractsupervisor 
+\newpage}
+ 
+ % translated abstract
+\def\trabstractpage{\cleardoublepage
+% \noindent\large{\bf \@title} \\
+% \hfill \\
+% \newline \noindent\@author 
+% \par
+% \def\baselinestretch{1}\@normalsize
+% \noindent
+% {\setlength{\parindent}{0cm}Submitted to the \@department  \\
+% on \@thesisdate, in partial fulfillment of the requirements for \\
+% the \@degreeword\ of \@degree}
+% \par
+\begin{translatedabstract}}
+
+%% Changed from \unvbox to \unvcopy for use with multiple copies of abstract
+%% page.
+%% Krishna Sethuraman (1990)
+\def\endtrabstractpage{\end{translatedabstract}\noindent
+ 
+%\unvcopy\@abstractsupervisor
+ \newpage}
 
 %% This counter is used to save the page number for the second copy of
 %% the abstract.
@@ -203,8 +248,17 @@ the \@degreeword\ of \@degree}
 \def\signature#1#2{\par\noindent#1\dotfill\null\\*
   {\raggedleft #2\par}}
 
-\def\abstract{\subsection*{Abstract}\small\def\baselinestretch{1}\@normalsize}
+% \def\abstract{\subsection*{Abstract}\small\def\baselinestretch{1}\@normalsize}
+% \def\endabstract{\par}
+\def\abstract{\chapter
+    *{Abstract}\small\def\baselinestretch{1}\@normalsize}
 \def\endabstract{\par}
+
+% You may want to change "Abstract" for the translated version in your local language (e.g. Résumé in French).
+
+\def\translatedabstract{\chapter
+    *{Abstract}\small\def\baselinestretch{1}\@normalsize}
+\def\endtranslatedabstract{\par}
 
 %% [AYB]
 %% Add a page for reader signature

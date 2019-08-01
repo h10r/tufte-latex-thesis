@@ -25,20 +25,46 @@
 %% Page Intentionally Left Blank'', use the ``leftblank'' option, as
 %% above. 
 
-\documentclass[nobib]{tufte-book}
+\documentclass[nobib,justified,titlepage]{tufte-book}
 \usepackage{lgrind}
 \usepackage{graphicx}
 \usepackage{lipsum}
+\usepackage{caption}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{moreverb}
 \usepackage{alltt}
-\usepackage{parskip}
+%\usepackage{parskip}
 \usepackage{url}
 \usepackage{array}
 \usepackage{pdfpages}
 \usepackage{wrapfig}
 \usepackage{geometry}
+\usepackage{afterpage}
+\usepackage{capt-of}
+\usepackage{pdflscape}
+% \usepackage[authoryear]{natbib}
+\usepackage{longtable}
+\usepackage[natbibapa]{apacite}
+
+% \usepackage[natbibapa]{apacite}
+% \bibliographystyle{apacite}
+
+\setcitestyle{citestyle=authoryear,brackets=square, maxcitenames=3}
+
+\titleformat{\chapter}%
+  [display]% shape
+  {\relax\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\begin{flushleft}}{}}% format applied to label+text
+%   {\itshape\LARGE\chaptertitlename~\thechapter}% label
+  {\itshape\HUGE\thechapter}% label
+  {0pt}% horizontal separation between label and title body
+  {\Huge\rmfamily\itshape}% before the title body
+  [\ifthenelse{\NOT\boolean{@tufte@symmetric}}{\end{flushleft}}{}]% after the title body
+\makeatother
+\setcounter{secnumdepth}{1}
+
+\let\cite\citep
+
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 
 %% These have been added at the request of the MIT Libraries, because
@@ -54,6 +80,7 @@
 % Prints an asterisk that takes up no horizontal space.
 % Useful in tabular environments.
 \newcommand{\hangstar}{\makebox[0pt][l]{*}}
+
 
 %%
 % Prints a trailing space in a smart way.
@@ -88,22 +115,105 @@
 }
 \makeatother
 
+
 %% This bit allows you to either specify onwly the files which you wish to
 %% process, or `all' to process all files which you \include.
 %% Krishna Sethuraman (1990).
 
+
+
 % \setcounter{secnumdepth}{0}
 % \includeonly{chap2}
 
-\begin{document}
+\makeatletter
+\renewcommand{\maketitlepage}{%
+\begingroup%
+\setlength{\parindent}{0pt}
+\newgeometry{left=2.4cm}
 
+{\fontsize{24}{24}\selectfont\textit{\@author}\par}
+
+\vspace{1.75in}{\fontsize{50}{60}\selectfont\@title\par}
+
+\vspace{0.5in}{\fontsize{14}{14}\selectfont\textsf{\smallcaps{\@date}}\par}
+
+\vfill{\fontsize{14}{14}\selectfont\textit{\@publisher}\par}
+
+\thispagestyle{empty}
+\endgroup
+}
+\makeatother
+
+
+
+
+
+
+% \titlecontents{part}%
+%     [0pt]% distance from left margin
+%     {\addvspace{0.25\baselineskip}}% above (global formatting of entry)
+%     {\allcaps{Part~\thecontentslabel}\allcaps}% before w/ label (label = ``Part I'')
+%     {\allcaps{Part~\thecontentslabel}\allcaps}% before w/o label
+%     {}% filler and page (leaders and page num)
+%     [\vspace*{0.5\baselineskip}]% after
+
+% \titlecontents{chapter}%
+%     [4em]% distance from left margin
+%     {}% above (global formatting of entry)
+%     {\contentslabel{2em}\textit}% before w/ label (label = ``Chapter 1'')
+%     {\hspace{0em}\textit}% before w/o label
+%     {\qquad\thecontentspage}% filler and page (leaders and page num)
+%     [\vspace*{0.5\baselineskip}]% after
+% %%%% End additional code by Kevin Godby
+
+\title{A Tufte-styled Thesis Template}
+\date{}
+\author[Carla F. Griggio]{Carla F. Griggio}
+\publisher{}
+\publisher{Universit\'e Paris-Saclay, ED STIC\\Supervisor: Your supervisor's name}
+
+
+
+\newcommand{\formatpart}[1]{%
+    \centering%
+    \begin{fullwidth}
+    \centering%
+    \hfil\partname~\thepart\hfil%%
+    \newline%
+    % \hfil\pgfornament[width=4cm]{84}\hfil%
+    \newline%
+    #1%
+    \end{fullwidth}
+    }
+
+\titleformat% Formatting the part header
+  {\part} % command
+  [block] % shape
+  {\bfseries\sc\Huge} % format
+  {} % label
+  {} % sep
+  { \formatpart
+}%
+
+
+
+\begin{document}
+\frontmatter
+\maketitlepage
 \include{cover}
 % Some departments (e.g. 5) require an additional signature page.  See
 % signature.tex for more information and uncomment the following line if
 % applicable.
 % \include{signature}
-\pagestyle{plain}
 \include{contents}
+
+
+\mainmatter
+% Some departments (e.g. 5) require an additional signature page.  See
+% signature.tex for more information and uncomment the following line if
+% applicable.
+% \include{signature}
+\pagestyle{plain}
 \include{chap1}
 \appendix
 \include{appa}

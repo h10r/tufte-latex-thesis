@@ -403,6 +403,8 @@
 \renewcommand\LARGE{\@setfontsize\LARGE\@xivpt{18}}
 \renewcommand\huge{\@setfontsize\huge\@xxpt{30}}
 \renewcommand\Huge{\@setfontsize\Huge{24}{36}}
+\renewcommand\HUGE{\@setfontsize\HUGE{60}{60}}
+
 
 \setlength\leftmargini   {1pc}
 \setlength\leftmarginii  {1pc}
@@ -1620,7 +1622,8 @@
 
 \titleformat{\section}%
   [hang]% shape
-  {\normalfont\Large\itshape}% format applied to label+text
+%  {\normalfont\Large\itshape}% format applied to label+text
+  {\normalfont\Large}% format applied to label+text
   {\thesection}% label
   {1em}% horizontal separation between label and title body
   {}% before the title body
@@ -1643,8 +1646,11 @@
   []% after the title body
 
 \titlespacing*{\chapter}{0pt}{50pt}{40pt}
-\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
-\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus.2ex}
+%\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus.2ex}
+\titlespacing*{\section}{0pt}{30pt}{20pt}
+\titlespacing*{\subsection}{0pt}{20pt}{5pt}
+
 
 % Subsubsection and following section headings shouldn't be used.
 % See Bringhurst's _The Elements of Typography_, section 4.2.2.
@@ -1674,37 +1680,37 @@
 \ifthenelse{\boolean{@tufte@toc}}{%
   \titlecontents{part}% FIXME
     [0em] % distance from left margin
-    {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\rmfamily\itshape} % above (global formatting of entry)
+    {\vspace{2.5\baselineskip}\begin{fullwidth}\LARGE\rmfamily\scshape} % above (global formatting of entry)
     {\contentslabel{2em}} % before w/label (label = ``II'')
-    {} % before w/o label
+    {Part } % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{chapter}%
     [0em] % distance from left margin
     {\vspace{1.5\baselineskip}\begin{fullwidth}\LARGE\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{0em}\contentslabel{2em}} % before w/label (label = ``2'')
-    {\hspace*{0em}} % before w/o label
+    {\hspace*{2em}\contentslabel{2em}} % before w/label (label = ``2'')
+    {\hspace*{2em}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{section}% FIXME
     [0em] % distance from left margin
     {\vspace{0\baselineskip}\begin{fullwidth}\Large\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{2em}\contentslabel{2em}} % before w/label (label = ``2.6'')
-    {\hspace*{2em}} % before w/o label
+    {\hspace*{5em}\contentslabel{2em}} % before w/label (label = ``2.6'')
+    {\hspace*{4em}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{subsection}% FIXME
     [0em] % distance from left margin
     {\vspace{0\baselineskip}\begin{fullwidth}\large\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{4em}\contentslabel{4em}} % before w/label (label = ``2.6.1'')
-    {\hspace*{4em}} % before w/o label
+    {\hspace*{6em}\contentslabel{4em}} % before w/label (label = ``2.6.1'')
+    {\hspace*{6em}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
   \titlecontents{paragraph}% FIXME
     [0em] % distance from left margin
     {\vspace{0\baselineskip}\begin{fullwidth}\normalsize\rmfamily\itshape} % above (global formatting of entry)
-    {\hspace*{6em}\contentslabel{2em}} % before w/label (label = ``2.6.0.0.1'')
-    {\hspace*{6em}} % before w/o label
+    {\hspace*{8em}\contentslabel{2em}} % before w/label (label = ``2.6.0.0.1'')
+    {\hspace*{8em}} % before w/o label
     {\rmfamily\upshape\qquad\thecontentspage} % filler + page (leaders and page num)
     [\end{fullwidth}] % after
 }{}

@@ -45,11 +45,11 @@
 % however the specifications can change.  We recommend that you verify the
 % layout of your title page with your thesis advisor and/or the MIT 
 % Libraries before printing your final copy.
-\newgeometry{left=3.5cm,bottom=0.1cm}
+\newgeometry{left=2.4cm}
 
-\title{My MIT Thesis}
+% \title{A Tufte-styled Thesis Template}
 
-\author{Student Name}
+% \author{Carla F. Griggio}
 % If you wish to list your previous degrees on the cover page, use the 
 % previous degrees command:
 % \prevdegrees{A.A., Harvard University (1985)}
@@ -63,9 +63,9 @@
 
 % As of the 2007-08 academic year, valid degree months are September, 
 % February, or June.  The default is June.
-\degreemonth{June}
-\degreeyear{2016}
-\thesisdate{May 20, 2016}
+\degreemonth{December}
+\degreeyear{2018}
+\thesisdate{October 15, 2018}
 
 %% By default, the thesis will be copyrighted to MIT.  If you need to copyright
 %% the thesis to yourself, just specify the `vi' documentclass option.  If for
@@ -75,12 +75,12 @@
 
 % If there is more than one supervisor, use the \supervisor command
 % once for each.
-\supervisor{William Barton Rogers}{Professor}
+% \supervisor{William Barton Rogers}{Professor}
 
 % This is the department committee chairman, not the thesis committee
 % chairman.  You should replace this with your Department's Committee
 % Chairman.
-\chairman{Susan Hockfield}{Chair(woman)}
+% \chairman{Susan Hockfield}{Chair(woman)}
 
 % Make the titlepage based on the above information.  If you need
 % something special and can't use the standard form, you can specify
@@ -88,7 +88,9 @@
 % environment and leave blank lines where you want vertical space.
 % The spaces will be adjusted to fill the entire page.  The dotted
 % lines for the signatures are made with the \signature command.
-\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\maketitle
 
 % The abstractpage environment sets up everything on the page except
 % the text itself.  The title and other header material are put at the
@@ -103,14 +105,23 @@
 %% \end{abstractpage} commands.
 
 % First copy: start a new page, and save the page number.
-\cleardoublepage
+% \cleardoublepage
 % Uncomment the next line if you do NOT want a page number on your
 % abstract and acknowledgments pages.
 % \pagestyle{empty}
-\setcounter{savepage}{\thepage}
+
+%\setcounter{savepage}{\thepage}
 \begin{abstractpage}
 \input{abstract}
 \end{abstractpage}
+
+%Translated abstract, in case your university requires another abstract in the local language
+\begin{trabstractpage}
+Place your translated abstract here, if you have one. 
+% If you want a different title rather than "Abstract" (e.g. Résumé in French), you can change it in tufte-book.cls line 256. Sorry, the parametrization is in the to-do list ^^
+\end{trabstractpage}
+
+
 
 % Additional copy: start a new page, and reset the page number.  This way,
 % the second copy of the abstract is not counted as separate pages.
@@ -140,3 +151,5 @@ own acknowledgements.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % -*-latex-*-
+
+
